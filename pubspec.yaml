@@ -1,4 +1,3 @@
-cat << 'EOF' > pubspec.yaml
 name: pizza_rush
 description: "A fast-paced pizza assembly mobile game."
 publish_to: 'none'
