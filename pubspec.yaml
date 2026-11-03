@@ -1,5 +1,5 @@
 name: pizza_rush
-description: "A fast-paced pizza assembly mobile game."
+description: "Canopy Cuisine - A treehouse fine dining mobile game."
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -18,3 +18,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
