@@ -45,7 +45,7 @@ enum SeatStatus { walkingToTable, seated, beingServed }
 class ActiveCustomer {
   final int id;
   final GourmetRecipe recipe;
-  final int tableIndex; // 0, 1, 2
+  final int tableIndex;
   SeatStatus status;
   int timeLeft;
   final int maxTime;
@@ -112,7 +112,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Truffle", "Pine Nuts", "Artisan Cheese"],
       greetingQuote: "\"Greetings, Chef. Could you prepare a Truffle Pine Risotto?\"",
       loreQuestion: "What brings an Elven Ranger to the high canopy tonight?",
-      loreAnswer: "\"Shadow wolves are migrating north. I'm scouting the ancient branches to keep the trade roads safe.\"",
+      loreAnswer: "\"Shadow wolves are migrating north. I'm scouting the ancient branches to keep trade roads safe.\"",
       assetName: "assets/elandor.png",
     ),
     GourmetRecipe(
@@ -122,7 +122,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Venison", "Smoked Wood", "Edible Flowers"],
       greetingQuote: "\"Good evening. I crave your famous Smoked Venison Carpaccio.\"",
       loreQuestion: "How did a noble lady cross the Whispering Woods alone?",
-      loreAnswer: "\"Alone? Hardly! My royal carriage is hidden below, guarded by spells and very expensive mercenaries.\"",
+      loreAnswer: "\"Alone? Hardly! My royal carriage is hidden below, guarded by spells and mercenaries.\"",
       assetName: "assets/vesper.png",
     ),
     GourmetRecipe(
@@ -132,7 +132,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Wild Boar", "Truffle", "Quail Egg"],
       greetingQuote: "\"Chef! Grom is starving! Make a Hunter's Roost Plate!\"",
       loreQuestion: "You look exhausted, Grom. What beast did you hunt today?",
-      loreAnswer: "\"Chased a giant Iron-Tusk Boar across three rivers! It broke my axe, so Grom came here to eat its cousin instead!\"",
+      loreAnswer: "\"Chased a giant Iron-Tusk Boar across three rivers! It broke my axe!\"",
       assetName: "assets/grom.png",
     ),
     GourmetRecipe(
@@ -141,8 +141,8 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       dishName: "Wild Berry Forest Tart",
       ingredients: ["Wild Berries", "Honeycomb", "Edible Flowers"],
       greetingQuote: "\"I need a Wild Berry Forest Tart before climbing the watchtower.\"",
-      loreQuestion: "Do the high treetops remind you of your homeland, Elandor?",
-      loreAnswer: "\"Indeed. In Silverleaf Spire, our halls are woven into living oaks three times this height. This place feels like home.\"",
+      loreQuestion: "Do the high treetops remind you of your homeland?",
+      loreAnswer: "\"Indeed. In Silverleaf Spire, our halls are woven into living oaks three times this height.\"",
       assetName: "assets/elandor.png",
     ),
     GourmetRecipe(
@@ -152,7 +152,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Wild Boar", "Honeycomb", "Pine Nuts"],
       greetingQuote: "\"Prepare the Golden Honey Boar for my table, if you please.\"",
       loreQuestion: "Why leave the High Castle for a rustic treehouse restaurant?",
-      loreAnswer: "\"Court banquets are full of poison and politics, darling. Up here in the leaves, the only danger is overeating.\"",
+      loreAnswer: "\"Court banquets are full of poison. Up here in the leaves, the only danger is overeating.\"",
       assetName: "assets/vesper.png",
     ),
     GourmetRecipe(
@@ -162,7 +162,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Wild Boar", "Smoked Wood", "Wild Berries"],
       greetingQuote: "\"Grom smells campfire! Bring Smoked Boar Ribs to my table!\"",
       loreQuestion: "How did you climb all the way up the treehouse rope ladder?",
-      loreAnswer: "\"Ladder? Ha! Grom grabbed a giant swinging vine and flew right onto your balcony! Almost scared the birds away!\"",
+      loreAnswer: "\"Ladder? Ha! Grom grabbed a giant swinging vine and flew right onto your balcony!\"",
       assetName: "assets/grom.png",
     ),
     GourmetRecipe(
@@ -182,7 +182,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Quail Egg", "Venison", "Pine Nuts"],
       greetingQuote: "\"A quick Ranger's Quail Skewer, Chef. Dawn approaches.\"",
       loreQuestion: "Have you heard any strange whispers in the deep forest?",
-      loreAnswer: "\"The ancient treants are waking from their century-long slumber. The aroma from your kitchen actually puts them in a good mood!\"",
+      loreAnswer: "\"The ancient treants are waking up. The aroma from your kitchen actually puts them in a good mood!\"",
       assetName: "assets/elandor.png",
     ),
     GourmetRecipe(
@@ -192,7 +192,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Artisan Cheese", "Wild Berries", "Honeycomb"],
       greetingQuote: "\"Grom wants sweet sticky Berry Cheese Mash right now!\"",
       loreQuestion: "Since when does a mighty barbarian enjoy sweet cheese mash?",
-      loreAnswer: "\"Grom's grandmother made it after winter battles! Even a warrior needs sweet berries to keep his heart warm!\"",
+      loreAnswer: "\"Grom's grandmother made it after winter battles! Sweet berries keep a warrior's heart warm!\"",
       assetName: "assets/grom.png",
     ),
     GourmetRecipe(
@@ -202,15 +202,13 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       ingredients: ["Venison", "Truffle", "Smoked Wood"],
       greetingQuote: "\"One final masterpiece: the Royal Venison Roast, please.\"",
       loreQuestion: "Will you recommend Canopy Cuisine to the Royal Court?",
-      loreAnswer: "\"Never! If the King learns about this hidden gem, I'll never find an empty table here again. It stays our secret!\"",
+      loreAnswer: "\"Never! If the King learns about this hidden gem, I'll never find an empty table here again!\"",
       assetName: "assets/vesper.png",
     ),
   ];
 
-  // 3 Masalık Restoran Salonu (null = masa boş)
   final List<ActiveCustomer?> _tables = [null, null, null];
   int? _selectedTableIndex;
-
   int _nextOrderSpawnIndex = 0;
   int _completedCustomers = 0;
   final List<String> _plate = [];
@@ -220,7 +218,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
   bool _isDragging = false;
   double _chefLookOffset = 0.0;
 
-  // Garson (Waiter) Durumu
   bool _waiterBusy = false;
   int? _waiterTargetTable;
 
@@ -233,7 +230,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
   @override
   void initState() {
     super.initState();
-
     _chefHeadController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1100),
@@ -244,7 +240,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       duration: const Duration(milliseconds: 1100),
     );
 
-    // İlk müşteriyi hemen içeri al
     _spawnNextCustomerIfPossible();
     _startMainGameLoop();
   }
@@ -253,15 +248,12 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
     _gameLoopTimer?.cancel();
     _gameLoopTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_isGameOver) return;
-
       _secondsSinceLastSpawn++;
 
-      // Her 6 saniyede bir, boş masa varsa önceki müşterinin kalkmasını beklemeden yeni müşteri gelsin
       if (_secondsSinceLastSpawn >= 6 && _nextOrderSpawnIndex < _allOrders.length) {
         _spawnNextCustomerIfPossible();
       }
 
-      // Masalarda oturan müşterilerin sabır sürelerini azalt
       for (int i = 0; i < _tables.length; i++) {
         final customer = _tables[i];
         if (customer != null && customer.status == SeatStatus.seated) {
@@ -278,10 +270,8 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
 
   void _spawnNextCustomerIfPossible() {
     if (_nextOrderSpawnIndex >= _allOrders.length) return;
-
-    // Boş masa bul
     int emptyTable = _tables.indexWhere((t) => t == null);
-    if (emptyTable == -1) return; // Tüm masalar doluysa boşalmasını bekle
+    if (emptyTable == -1) return;
 
     final recipe = _allOrders[_nextOrderSpawnIndex];
     final newCustomer = ActiveCustomer(
@@ -293,12 +283,11 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
 
     setState(() {
       _tables[emptyTable] = newCustomer;
-      _selectedTableIndex = emptyTable; // Yeni gelen müşterinin konuşma balonunu aç
+      _selectedTableIndex = emptyTable;
       _nextOrderSpawnIndex++;
       _secondsSinceLastSpawn = 0;
     });
 
-    // Kapıdan masaya yürüme süresi (1.2 saniye sonra masaya oturur)
     Future.delayed(const Duration(milliseconds: 1200), () {
       if (mounted && _tables[emptyTable]?.id == newCustomer.id) {
         setState(() {
@@ -324,12 +313,11 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("${leavingCustomer.recipe.npcName} waited too long and left Table ${tableIdx + 1}! (-25 pts)"),
+        content: Text("${leavingCustomer.recipe.npcName} left Table ${tableIdx + 1} due to delay! (-25 pts)"),
         backgroundColor: Colors.redAccent,
         duration: const Duration(milliseconds: 1100),
       ),
     );
-
     _checkShiftFinished();
   }
 
@@ -338,26 +326,22 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
     _selectedTableIndex = idx != -1 ? idx : null;
   }
 
-  // Diyalog Seçeneği 1: "Hemen hazırlıyorum"
   void _chooseQuickReply(ActiveCustomer customer) {
     if (customer.choiceMade) return;
-    setState(() {
-      customer.choiceMade = true;
-    });
+    setState(() => customer.choiceMade = true);
   }
 
-  // Diyalog Seçeneği 2: Karakter Lore Sorusu
   void _chooseLoreQuestion(ActiveCustomer customer) {
     if (customer.loreUnlocked) return;
     setState(() {
       customer.loreUnlocked = true;
       customer.choiceMade = true;
-      _score += 15; // Lore öğrenme / sohbet bonusu
-      customer.timeLeft = (customer.timeLeft + 8).clamp(0, customer.maxTime); // Sohbet ettiği için sabrı artar
+      _score += 15;
+      customer.timeLeft = (customer.timeLeft + 8).clamp(0, customer.maxTime);
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Lore Unlocked! ${customer.recipe.npcName} appreciates the chat (+15 pts & +8s patience)"),
+        content: Text("Lore Unlocked! ${customer.recipe.npcName} chats (+15 pts & +8s patience)"),
         backgroundColor: Colors.teal.shade700,
         duration: const Duration(milliseconds: 1100),
       ),
@@ -375,15 +359,11 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
     });
   }
 
-  void _clearPlate() {
-    setState(() => _plate.clear());
-  }
+  void _clearPlate() => setState(() => _plate.clear());
 
-  // Zile Basınca Garsonun Masaya Götürmesi
   void _ringBell() {
     if (_isGameOver || _plate.isEmpty || _waiterBusy) return;
 
-    // Masalarda oturan müşterilerden bu yemeği bekleyen var mı kontrol et (en az süresi kalana öncelik ver)
     int? matchingTable;
     int lowestTime = 999;
 
@@ -411,7 +391,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
         _waiterTargetTable = matchingTable;
       });
 
-      // Garson masaya yürür ve servisi yapar
       _waiterController.forward(from: 0.0).then((_) {
         if (!mounted) return;
         int earned = 100 + (servedCust.timeLeft * 2) + (_streak * 20);
@@ -434,13 +413,10 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
             duration: const Duration(milliseconds: 1000),
           ),
         );
-
         _checkShiftFinished();
-        // Masada yer açıldığı için bekleyen müşteri varsa hemen gelsin
         _spawnNextCustomerIfPossible();
       });
     } else {
-      // Hiçbir masanın siparişiyle uyuşmuyorsa ceza
       setState(() {
         _score = (_score - 20).clamp(0, 99999);
         _streak = 0;
@@ -448,9 +424,9 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
       });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("Wrong dish! No seated guest ordered this combination (-20 pts)"),
+          content: Text("Wrong dish! No seated guest ordered this (-20 pts)"),
           backgroundColor: Colors.deepOrange,
-          duration: Duration(milliseconds: 1000),
+          duration: const Duration(milliseconds: 1000),
         ),
       );
     }
@@ -459,9 +435,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
   void _checkShiftFinished() {
     if (_completedCustomers >= _allOrders.length) {
       _gameLoopTimer?.cancel();
-      setState(() {
-        _isGameOver = true;
-      });
+      setState(() => _isGameOver = true);
     }
   }
 
@@ -535,9 +509,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
 
   Widget _buildAnimatedChef() {
     return GestureDetector(
-      onTap: () {
-        setState(() => _chefLookOffset = _chefLookOffset == 0 ? 0.28 : 0.0);
-      },
+      onTap: () => setState(() => _chefLookOffset = _chefLookOffset == 0 ? 0.28 : 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -672,6 +644,30 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
           ),
           child: Column(
             children: [
+              // 🌲 AĞAÇ EVİ KANOPİSİ VE ASMA LANTERNLER
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF132E1B), Color(0xFF233D23)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  border: Border(bottom: BorderSide(color: Color(0xFF8D6E63), width: 2)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text("🌿🍃", style: TextStyle(fontSize: 14)),
+                    SizedBox(width: 8),
+                    Text("🏮 CANOPY TREEHOUSE FINE DINING 🏮", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.amberAccent, letterSpacing: 1.1)),
+                    SizedBox(width: 8),
+                    Text("🍃🌿", style: TextStyle(fontSize: 14)),
+                  ],
+                ),
+              ),
+
               // 1. ÜST DURUM ÇUBUĞU
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -680,15 +676,15 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("🌳 Canopy Treehouse", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.amberAccent)),
-                    Text("Guests: $_completedCustomers/${_allOrders.length}", style: const TextStyle(fontSize: 12, color: Colors.white70)),
-                    Text("Streak: $_streak🔥", style: const TextStyle(fontSize: 12, color: Colors.orangeAccent, fontWeight: FontWeight.bold)),
-                    Text("⭐ $_score", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.greenAccent)),
+                    const Text("🌳 Treehouse", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.amberAccent)),
+                    Text("Guests: $_completedCustomers/${_allOrders.length}", style: const TextStyle(fontSize: 11, color: Colors.white70)),
+                    Text("Streak: $_streak🔥", style: const TextStyle(fontSize: 11, color: Colors.orangeAccent, fontWeight: FontWeight.bold)),
+                    Text("⭐ $_score", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.greenAccent)),
                   ],
                 ),
               ),
 
-              // 2. RESTORAN SALONU: KAPI + 3 GÖRÜNÜR MASA + HAREKETLİ GARSON
+              // 2. RESTORAN SALONU: KAPI + 3 MASA + GARSON
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 padding: const EdgeInsets.all(8),
@@ -698,9 +694,9 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text("🚪 Treehouse Dining Hall (Tap any table to talk)", style: TextStyle(fontSize: 10, color: Colors.greenAccent)),
+                        const Text("🚪 Dining Hall (Tap any table to talk)", style: TextStyle(fontSize: 10, color: Colors.greenAccent)),
                         Text(
-                          _waiterBusy ? "🤵 Waiter: Delivering dish to Table ${_waiterTargetTable! + 1}!" : "🤵 Waiter: Ready at counter",
+                          _waiterBusy ? "🤵 Waiter on duty!" : "🤵 Waiter ready",
                           style: const TextStyle(fontSize: 10, color: Colors.amberAccent, fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -712,7 +708,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                         children: [
                           Row(
                             children: [
-                              // Sol: Ahşap Giriş Kapısı
                               Container(
                                 width: 38,
                                 height: 100,
@@ -730,8 +725,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                                 ),
                               ),
                               const SizedBox(width: 6),
-
-                              // 3 Adet Restoran Masası
                               ...List.generate(3, (tableIdx) {
                                 final cust = _tables[tableIdx];
                                 final isSelected = _selectedTableIndex == tableIdx && cust != null;
@@ -768,7 +761,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                                           : Column(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                // Masa Başlığı & Sabır Süresi
                                                 Row(
                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: [
@@ -783,14 +775,12 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                                                     ),
                                                   ],
                                                 ),
-                                                // Sabır Çubuğu
                                                 LinearProgressIndicator(
                                                   value: cust.timeLeft / cust.maxTime,
                                                   backgroundColor: Colors.black45,
                                                   color: cust.timeLeft <= 12 ? Colors.redAccent : Colors.amber,
                                                   minHeight: 4,
                                                 ),
-                                                // Müşteri Görseli ve Durumu
                                                 Row(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
@@ -799,7 +789,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                                                     Expanded(
                                                       child: Text(
                                                         cust.status == SeatStatus.walkingToTable
-                                                            ? "Walking to seat..."
+                                                            ? "Walking..."
                                                             : cust.recipe.dishName,
                                                         maxLines: 2,
                                                         overflow: TextOverflow.ellipsis,
@@ -808,7 +798,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                                                     ),
                                                   ],
                                                 ),
-                                                // Masadaki Müşterinin Beklediği 3 Malzeme İkonu
                                                 Row(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: cust.recipe.ingredients.map((ing) {
@@ -827,14 +816,11 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                               }),
                             ],
                           ),
-
-                          // Yemeği Masaya Götüren Garson Animasyonu
                           if (_waiterBusy && _waiterTargetTable != null)
                             AnimatedBuilder(
                               animation: _waiterController,
                               builder: (context, child) {
                                 double t = Curves.easeInOut.transform(_waiterController.value);
-                                // Garson sağ alttan hedef masanın konumuna yürür
                                 double targetAlignX = -0.5 + (_waiterTargetTable! * 0.65);
                                 double currentX = 0.9 + (targetAlignX - 0.9) * sin(t * pi);
                                 double currentY = 0.8 - (sin(t * pi) * 0.7);
@@ -847,7 +833,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                                       color: Colors.amber.shade800,
                                       borderRadius: BorderRadius.circular(16),
                                       border: Border.all(color: Colors.white, width: 1.5),
-                                      boxShadow: const [BoxShadow(color: Colors.black87, blurRadius: 6)],
                                     ),
                                     child: const Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -868,7 +853,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                 ),
               ),
 
-              // 3. ÖZEL KONUŞMA VE KARAKTER LORE SEKMESİ (2 SEÇENEKLİ DİYALOG KUTUSU)
+              // 3. ÖZEL KONUŞMA VE LORE SEKMESİ
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 padding: const EdgeInsets.all(8),
@@ -878,7 +863,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                         height: 78,
                         child: Center(
                           child: Text(
-                            "Waiting for next forest guest to walk through the door...",
+                            "Waiting for guest at the treehouse door...",
                             style: TextStyle(fontSize: 11, color: Colors.white54, fontStyle: FontStyle.italic),
                           ),
                         ),
@@ -924,7 +909,6 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                             ],
                           ),
                           const SizedBox(height: 6),
-                          // İki Diyalog Seçeneği Butonu
                           Row(
                             children: [
                               Expanded(
@@ -940,7 +924,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                                       padding: const EdgeInsets.symmetric(horizontal: 6),
                                     ),
                                     child: const Text(
-                                      "1. Right away! Preparing it now.",
+                                      "1. Right away! Cooking now.",
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(fontSize: 9.5, color: Colors.white),
                                     ),
@@ -977,7 +961,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                       ),
               ),
 
-              // 4. AÇIK MUTFAK TEZGAHI: KAFASINI HAREKET ETTİREN ŞEF + AHŞAP TABAK + ZİL
+              // 4. AÇIK MUTFAK TEZGAHI
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
@@ -1078,7 +1062,7 @@ class _TreehouseRestaurantScreenState extends State<TreehouseRestaurantScreen>
                 ),
               ),
 
-              // 5. MUTFAK RAFI (SÜRÜKLE-BIRAK MALZEMELER)
+              // 5. MUTFAK RAFI (SÜRÜKLE-BIRAK)
               Expanded(
                 child: Container(
                   margin: const EdgeInsets.fromLTRB(8, 2, 8, 6),
