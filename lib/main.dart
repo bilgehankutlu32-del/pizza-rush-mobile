@@ -11,6 +11,7 @@ class GourmetRecipe {
   final String dishName;
   final List<String> ingredients;
   final String quote;
+  final String assetName;
 
   GourmetRecipe({
     required this.npcName,
@@ -18,6 +19,7 @@ class GourmetRecipe {
     required this.dishName,
     required this.ingredients,
     required this.quote,
+    required this.assetName,
   });
 }
 
@@ -32,7 +34,7 @@ class CanopyCuisineApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.green,
-        scaffoldBackgroundColor: const Color(0xFF1E2720), // Koyu orman yeşili
+        scaffoldBackgroundColor: const Color(0xFF131814), // Koyu orman yeşili
       ),
       home: const KitchenScreen(),
     );
@@ -47,18 +49,88 @@ class KitchenScreen extends StatefulWidget {
 }
 
 class _KitchenScreenState extends State<KitchenScreen> {
-  // 3 Farklı NPC ve onların 10 özel siparişi
+  // Karakterlerimizin visual_identity.png ile tam uyumlu sipariş listesi
   final List<GourmetRecipe> _allOrders = [
-    GourmetRecipe(npcName: "Elandor", npcRole: "Elven Ranger", dishName: "Truffle Pine Risotto", ingredients: ["Truffle", "Pine Nuts", "Artisan Cheese"], quote: "\"I need a hearty meal before the long patrol.\","),
-    GourmetRecipe(npcName: "Lady Vesper", npcRole: "Noble Traveler", dishName: "Smoked Venison Carpaccio", ingredients: ["Venison", "Smoked Wood", "Edible Flowers"], quote: "\"Surprise my delicate palate, chef.\","),
-    GourmetRecipe(npcName: "Grom", npcRole: "Forest Barbarian", dishName: "Hunters Roost", ingredients: ["Wild Boar", "Truffle", "Quail Egg"], quote: "\"Meat! Give Grom meat and eggs!\","),
-    GourmetRecipe(npcName: "Elandor", npcRole: "Elven Ranger", dishName: "Wild Berry Forest Tart", ingredients: ["Wild Berries", "Honeycomb", "Edible Flowers"], quote: "\"Something sweet, reminiscent of the deep woods.\","),
-    GourmetRecipe(npcName: "Lady Vesper", npcRole: "Noble Traveler", dishName: "Golden Honey Boar", ingredients: ["Wild Boar", "Honeycomb", "Pine Nuts"], quote: "\"A rich, glazed cut would suit me well today.\","),
-    GourmetRecipe(npcName: "Grom", npcRole: "Forest Barbarian", dishName: "Smoked Boar Ribs", ingredients: ["Wild Boar", "Smoked Wood", "Wild Berries"], quote: "\"Smoke it well! Make it smell like fire!\","),
-    GourmetRecipe(npcName: "Lady Vesper", npcRole: "Noble Traveler", dishName: "Truffle Cheese Board", ingredients: ["Truffle", "Artisan Cheese", "Honeycomb"], quote: "\"A simple pairing of earthy and sweet.\","),
-    GourmetRecipe(npcName: "Elandor", npcRole: "Elven Ranger", dishName: "Ranger's Quail Skewer", ingredients: ["Quail Egg", "Venison", "Pine Nuts"], quote: "\"Quick protein for the journey ahead.\","),
-    GourmetRecipe(npcName: "Grom", npcRole: "Forest Barbarian", dishName: "Berry Cheese Mash", ingredients: ["Artisan Cheese", "Wild Berries", "Honeycomb"], quote: "\"Grom wants the sweet and sticky cheese!\","),
-    GourmetRecipe(npcName: "Lady Vesper", npcRole: "Noble Traveler", dishName: "Royal Venison Roast", ingredients: ["Venison", "Truffle", "Smoked Wood"], quote: "\"The finest cut you have, smoked to perfection.\","),
+    GourmetRecipe(
+      npcName: "Elandor", 
+      npcRole: "Elven Ranger", 
+      dishName: "Truffle Pine Risotto", 
+      ingredients: ["Truffle", "Pine Nuts", "Artisan Cheese"], 
+      quote: "\"I need a hearty meal before the long patrol through the forest.\"",
+      assetName: "assets/elandor.png"
+    ),
+    GourmetRecipe(
+      npcName: "Lady Vesper", 
+      npcRole: "Noble Traveler", 
+      dishName: "Smoked Venison Carpaccio", 
+      ingredients: ["Venison", "Smoked Wood", "Edible Flowers"], 
+      quote: "\"Surprise my delicate traveling palate, chef. Nothing but the finest.\"",
+      assetName: "assets/vesper.png"
+    ),
+    GourmetRecipe(
+      npcName: "Grom", 
+      npcRole: "Forest Barbarian", 
+      dishName: "Hunters Roost", 
+      ingredients: ["Wild Boar", "Truffle", "Quail Egg"], 
+      quote: "\"Meat! Give Grom the biggest hunt you have and some eggs!\"",
+      assetName: "assets/grom.png"
+    ),
+    GourmetRecipe(
+      npcName: "Elandor", 
+      npcRole: "Elven Ranger", 
+      dishName: "Wild Berry Forest Tart", 
+      ingredients: ["Wild Berries", "Honeycomb", "Edible Flowers"], 
+      quote: "\"Something sweet today, reminiscent of the canopy's wild fruits.\"",
+      assetName: "assets/elandor.png"
+    ),
+    GourmetRecipe(
+      npcName: "Lady Vesper", 
+      npcRole: "Noble Traveler", 
+      dishName: "Golden Honey Boar", 
+      ingredients: ["Wild Boar", "Honeycomb", "Pine Nuts"], 
+      quote: "\"A rich, glazed cut of the mountain boar would suit me perfectly.\"",
+      assetName: "assets/vesper.png"
+    ),
+    GourmetRecipe(
+      npcName: "Grom", 
+      npcRole: "Forest Barbarian", 
+      dishName: "Smoked Boar Ribs", 
+      ingredients: ["Wild Boar", "Smoked Wood", "Wild Berries"], 
+      quote: "\"Smoke it well! Make the forest meat smell like a real campfire!\"",
+      assetName: "assets/grom.png"
+    ),
+    GourmetRecipe(
+      npcName: "Lady Vesper", 
+      npcRole: "Noble Traveler", 
+      dishName: "Truffle Cheese Board", 
+      ingredients: ["Truffle", "Artisan Cheese", "Honeycomb"], 
+      quote: "\"A simple, exquisite pairing of earthy truffles and wild honey, please.\"",
+      assetName: "assets/vesper.png"
+    ),
+    GourmetRecipe(
+      npcName: "Elandor", 
+      npcRole: "Elven Ranger", 
+      dishName: "Ranger's Quail Skewer", 
+      ingredients: ["Quail Egg", "Venison", "Pine Nuts"], 
+      quote: "\"Compact and quick protein. Ideal for the journey ahead.\"",
+      assetName: "assets/elandor.png"
+    ),
+    GourmetRecipe(
+      npcName: "Grom", 
+      npcRole: "Forest Barbarian", 
+      dishName: "Berry Cheese Mash", 
+      ingredients: ["Artisan Cheese", "Wild Berries", "Honeycomb"], 
+      quote: "\"Grom wants something sweet, sticky, and mashed with mountain berries!\"",
+      assetName: "assets/grom.png"
+    ),
+    GourmetRecipe(
+      npcName: "Lady Vesper", 
+      npcRole: "Noble Traveler", 
+      dishName: "Royal Venison Roast", 
+      ingredients: ["Venison", "Truffle", "Smoked Wood"], 
+      quote: "\"The most decadent cut you have, smoked to perfection on woodland wood.\"",
+      assetName: "assets/vesper.png"
+    ),
   ];
 
   final List<String> _pantryItems = [
@@ -105,7 +177,7 @@ class _KitchenScreenState extends State<KitchenScreen> {
   }
 
   void _addToPlate(String ingredient) {
-    if (_isGameOver || _plate.length >= 3) return; // Maksimum 3 malzeme
+    if (_isGameOver || _plate.length >= 3) return;
     setState(() {
       _plate.add(ingredient);
     });
@@ -119,10 +191,8 @@ class _KitchenScreenState extends State<KitchenScreen> {
 
   void _ringBell() {
     if (_isGameOver) return;
-    
     final target = _allOrders[_currentOrderIndex].ingredients;
     
-    // Malzeme sırası önemli değil, içerik tam eşleşmeli
     bool isMatch = _plate.length == target.length &&
         _plate.toSet().containsAll(target) &&
         target.toSet().containsAll(_plate);
@@ -141,7 +211,7 @@ class _KitchenScreenState extends State<KitchenScreen> {
       setState(() {
         _score = (_score - 20).clamp(0, 99999);
         _streak = 0;
-        _plate.clear(); // Hatalı tabakta tabağı temizle
+        _plate.clear();
       });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Wrong ingredients! (-20 pts)"), backgroundColor: Colors.orangeAccent, duration: const Duration(milliseconds: 1000)),
@@ -216,7 +286,7 @@ class _KitchenScreenState extends State<KitchenScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Canopy Cuisine", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.amberAccent)),
-        backgroundColor: const Color(0xFF141915),
+        backgroundColor: const Color(0xFF0F1410),
         elevation: 0,
         actions: [
           Center(
@@ -229,10 +299,10 @@ class _KitchenScreenState extends State<KitchenScreen> {
       ),
       body: Column(
         children: [
-          // Üst Bilgi Barı
+          // Üst Durum Çubuğu
           Container(
             padding: const EdgeInsets.all(12),
-            color: const Color(0xFF28362B),
+            color: const Color(0xFF1E2820),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -249,28 +319,41 @@ class _KitchenScreenState extends State<KitchenScreen> {
             ),
           ),
           
-          // NPC ve Sipariş Kartı
+          // NPC ve Müşteri Alanı
           Container(
             margin: const EdgeInsets.all(12),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: const Color(0xFF141915),
+              color: const Color(0xFF0F1410),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Colors.amber.withOpacity(0.3), width: 1),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Resim Düşerse Hata Vermeyen CircleAvatar (Resim Yoksa İkon Gösterir)
                 CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.amber.shade800,
-                  child: Icon(
-                    currentOrder.npcName == "Elandor" ? Icons.nature_people : 
-                    currentOrder.npcName == "Grom" ? Icons.fitness_center : Icons.diamond, 
-                    size: 30, color: Colors.white
+                  radius: 35,
+                  backgroundColor: Colors.amber.shade900.withOpacity(0.3),
+                  child: ClipOval(
+                    child: Image.asset(
+                      currentOrder.assetName,
+                      fit: BoxFit.cover,
+                      width: 70,
+                      height: 70,
+                      // Dosya yolu henüz yoksa, çökmeden cankurtaran ikonu açar (Actions yeşil tik garantisi!)
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(
+                          currentOrder.npcName == "Elandor" ? Icons.nature_people : 
+                          currentOrder.npcName == "Grom" ? Icons.fitness_center : Icons.diamond, 
+                          size: 32, 
+                          color: Colors.amber
+                        );
+                      },
+                    ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: 14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -278,18 +361,18 @@ class _KitchenScreenState extends State<KitchenScreen> {
                       Row(
                         children: [
                           Text(currentOrder.npcName, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.amberAccent)),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 6),
                           Text("(${currentOrder.npcRole})", style: const TextStyle(fontSize: 12, color: Colors.white54)),
                         ],
                       ),
                       const SizedBox(height: 4),
                       Text(currentOrder.quote, style: const TextStyle(fontStyle: FontStyle.italic, color: Colors.white70, fontSize: 13)),
                       const Divider(color: Colors.white12, height: 16),
-                      Text("Orders: ${currentOrder.dishName}", style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent)),
+                      Text("Requests: ${currentOrder.dishName}", style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent)),
                       const SizedBox(height: 4),
                       Wrap(
                         spacing: 6,
-                        children: currentOrder.ingredients.map((ing) => Text("• $ing", style: const TextStyle(fontSize: 11, color: Colors.white60))).toList(),
+                        children: currentOrder.ingredients.map((ing) => Text("• $ing", style: const TextStyle(fontSize: 11, color: Colors.white70))).toList(),
                       ),
                     ],
                   ),
@@ -298,13 +381,13 @@ class _KitchenScreenState extends State<KitchenScreen> {
             ),
           ),
 
-          // Şefin Tabağı (Plate)
+          // Tabak Hazırlama Bölümü
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Your Plate (Max 3):", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.amberAccent)),
+                const Text("Your Fine-Dining Plate (Max 3):", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.amberAccent)),
                 TextButton.icon(
                   onPressed: _clearPlate,
                   icon: const Icon(Icons.delete_outline, size: 16, color: Colors.grey),
@@ -315,16 +398,16 @@ class _KitchenScreenState extends State<KitchenScreen> {
           ),
           
           Container(
-            height: 60,
+            height: 56,
             margin: const EdgeInsets.symmetric(horizontal: 12),
             padding: const EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFF141915),
+              color: const Color(0xFF0F1410),
               borderRadius: BorderRadius.circular(40),
               border: Border.all(color: Colors.amber.withOpacity(0.5)),
             ),
             child: _plate.isEmpty
-                ? const Center(child: Text("Plate is empty. Add from pantry!", style: TextStyle(color: Colors.white38)))
+                ? const Center(child: Text("Add foraged ingredients from below!", style: TextStyle(color: Colors.white38)))
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: _plate.map((ing) => Container(
@@ -336,13 +419,13 @@ class _KitchenScreenState extends State<KitchenScreen> {
                   ),
           ),
           
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Align(alignment: Alignment.centerLeft, child: Text("Pantry Ingredients:", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent))),
+            child: Align(alignment: Alignment.centerLeft, child: Text("Kitchen Pantry Shelf:", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent))),
           ),
           
-          // Malzeme Izgarası (Pantry)
+          // Malzemeler Grid
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(12),
@@ -358,7 +441,7 @@ class _KitchenScreenState extends State<KitchenScreen> {
                 return ElevatedButton(
                   onPressed: _plate.length < 3 ? () => _addToPlate(item) : null,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF28362B),
+                    backgroundColor: const Color(0xFF233025),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -369,7 +452,7 @@ class _KitchenScreenState extends State<KitchenScreen> {
             ),
           ),
           
-          // Zil Çalma Butonu
+          // Servis Etme Butonu
           Padding(
             padding: const EdgeInsets.all(12),
             child: SizedBox(
